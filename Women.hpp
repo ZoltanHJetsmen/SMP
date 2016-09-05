@@ -22,7 +22,7 @@ public:
 	
 	void setPreference(int n, char * preference){
 	
-		preference = new char[n];
+		this->preference = new char[n];
 		for(int i = 0; i < n; i++) this->preference[i] = preference[i];
 	}
 
@@ -42,6 +42,13 @@ public:
         
         return true;
     }
+
+	void printInformation(){
+
+		cout << "Name: " << name << endl;
+		cout << "Couple: " << currentCouple << endl;
+		for(int i = 0; i < 2; i++) cout << "Preference: " << preference[i] << endl;
+	}
 };
 
 #endif

@@ -5,14 +5,19 @@ um na posição
 3 - Fazer a main correta(cirar man e women como vetores e etc)
 */
 
+#include <iostream>
+using namespace std;
+
 #include "Man.hpp"
 #include "Women.hpp"
 #include "SMP.hpp"
 
 int main(int argc, char ** argv){
 
-	Man man('a');
-	Women women('A');
+	int n;
+	cin >> n;
+
+	SMP(n);
 
 	return 0;
 
