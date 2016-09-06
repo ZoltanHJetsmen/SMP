@@ -10,4 +10,6 @@ clean:
 	rm SMP
 
 debug:
+	g++ Main.cpp -o SMP -g
 	valgrind ./SMP
+	rm SMP

@@ -1,9 +1,4 @@
-/*
-1 - Confirmando a traca de casais, fazer com que o homem velho fique sem esposa, setando barra zero em 'currentCouple' e aumentando em 
-um na posição
-2 - Fazer a impressão do resultado final
-3 - Fazer a main correta(cirar man e women como vetores e etc)
-*/
+//Progam which resolve the Stable Marrige Problem with the algorith Gale-Shapley
 
 #include <iostream>
 using namespace std;

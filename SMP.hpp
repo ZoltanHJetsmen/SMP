@@ -4,19 +4,13 @@
 int verifyFreeMan(int n, Man ** man){
 
 	for(int i = 0; i < n; i++){
-		cout << i << endl;
-		cout << man[i]->getCurrentCouple() << endl;
 		if(man[i]->getCurrentCouple() == '\0') return i;
 	}
 
 	return -1;
 }
 
-
-void SMP(int n){
-
-	Man * man[n];
-	Women * women[n];
+void input(Man ** man, Women ** women, int n){
 
 	for(int i = 0; i < n; i++){
 		char name;
@@ -38,16 +32,19 @@ void SMP(int n){
 		else women[i-n]->setPreference(n,preference);
 		delete preference;
 	}
+}
 
-	
-	
+void SMP(int n){
+
+	Man * man[n];
+	Women * women[n];
+
+	input(man,women,n);
 	
 	int i, a;
 	
-	while(a = verifyFreeMan(n,man) != -1){
-	//for(int z = 0; z < 1; z++){
-		a = verifyFreeMan(n,man);
-
+	while((a = verifyFreeMan(n,man)) != -1){
+		
 		char nextWomen = man[a]->getNextPreference();
 		
 		for(i = 0; women[i]->getName() != nextWomen; i++);
@@ -62,27 +59,30 @@ void SMP(int n){
 		
 		}
 		else{
-			int j;
+			int j, q;
 			for(j = 0; j < n; j++){
 				if(women[i]->getPreference(j) == man[a]->getName()) break;
 			}
 			if(women[i]->changeCouple(j)){
-				for(int q = 0; i < n; q++){
-					
-				}
+				char oldCouple = women[i]->getCurrentCouple();
+				for(q = 0; man[q]->getName() != oldCouple; q++);
+				man[q]->setCurrentCouple('\0');
+				man[q]->addPosition();
 				women[i]->setCurrentCouple(man[a]->getName(),j);
 				man[a]->setCurrentCouple(women[i]->getName());
 			}
 			else man[a]->addPosition();
+		}
+
+		for(int i = 0; i < n; i++){
+			man[i]->printInformation(n);
+		}
+		for(int i = 0; i < n; i++){
+			women[i]->printInformation(n);
 		}		
 	}
 
-	for(int i = 0; i < n; i++){
-		man[i]->printInformation();
-	}
-	for(int i = 0; i < n; i++){
-		women[i]->printInformation();
-	}
+	for(int i = 0; i < n; i++) delete man[i]; delete women[i];
 }
 
 #endif

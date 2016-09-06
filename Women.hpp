@@ -43,11 +43,11 @@ public:
         return true;
     }
 
-	void printInformation(){
+	void printInformation(int n){
 
 		cout << "Name: " << name << endl;
 		cout << "Couple: " << currentCouple << endl;
-		for(int i = 0; i < 2; i++) cout << "Preference: " << preference[i] << endl;
+		for(int i = 0; i < n; i++) cout << "Preference: " << preference[i] << endl;
 	}
 };
 
